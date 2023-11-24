@@ -5,47 +5,47 @@ class Garage {
   #cars;
 
   constructor(carNames) {
-    this.#createCars(carNames);
-    this.#validateCarNameDuplication();
+    this.#cars = Garage.#createCars(Garage.#validateCarNameDuplication(carNames));
   }
 
   getCars() {
     return this.#cars;
   }
 
-  getFurthestTravelCarsNames() {
+  getFurthestTravelCarNames() {
     const furthestTravelDistance = this.#getFurthestTravelDistance();
-    const furestTravelCarsNames = this.#cars
+    const furestTravelCarNames = this.#cars
       .filter((car) => car.getTravelDistance() === furthestTravelDistance)
       .map((car) => car.getName());
 
-    return furestTravelCarsNames;
+    return furestTravelCarNames;
   }
 
   takeActionCars() {
     this.#cars.forEach((car) => {
       car.takeAction();
     });
+
     return this;
   }
 
   #getFurthestTravelDistance() {
-    const carsTravelDistances = this.#cars
+    const carTravelDistances = this.#cars
       .map((car) => car.getTravelDistance())
       .sort((a, b) => b - a);
-    return carsTravelDistances[0];
+
+    return carTravelDistances[0];
   }
 
-  #createCars(carNames) {
-    const carNamesArray = carNames.split(',');
+  static #createCars(carNamesArray) {
     const cars = carNamesArray.map((carName) => new Car(carName));
-    this.#cars = cars;
+    return cars;
   }
 
-  #validateCarNameDuplication() {
-    const carNames = this.#cars.map((car) => car.getName());
+  static #validateCarNameDuplication(carNames) {
     const validation = new GarageValidation(carNames);
-    validation.validate();
+    const carNameArray = validation.validate();
+    return carNameArray;
   }
 }
 

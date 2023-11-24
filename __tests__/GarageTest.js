@@ -9,13 +9,29 @@ const mockRandoms = (numbers) => {
 };
 
 describe('차고 테스트', () => {
-  test('차고에 자동차들의 이름 중 중복된 경우 예외 처리한다.', () => {
+  test('차고에 전달할 자동차들의 이름 중 중복이 있는 경우 예외 처리한다.', () => {
     expect(() => {
       new Garage('jun,jun,zed');
     }).toThrow();
 
     expect(() => {
       new Garage('jun,zed,jun');
+    }).toThrow();
+  });
+
+  test('차고에 전달한 자동차 이름이 하나인 경우 예외 처리한다.', () => {
+    expect(() => {
+      new Garage('jun');
+    }).toThrow();
+  });
+
+  test('차고에 전달한 자동차 이름이 공백이거나 없을 경우 예외 처리한다.', () => {
+    expect(() => {
+      new Garage();
+    }).toThrow();
+
+    expect(() => {
+      new Garage('');
     }).toThrow();
   });
 
@@ -61,7 +77,7 @@ describe('차고 테스트', () => {
       garage.takeActionCars();
     });
 
-    expect(garage.getFurthestTravelCarsNames()).toEqual(FUREST_TRAVEL_CAR_NAMES);
+    expect(garage.getFurthestTravelCarNames()).toEqual(FUREST_TRAVEL_CAR_NAMES);
   });
 
   test('차고가 보유한 자동차 중 가장 먼 거리를 전진한 자동차들의 이름을 반환할 때 가장 먼 거리의 자동차가 여러 개인 경우 모두 반환한다.', () => {
@@ -80,6 +96,6 @@ describe('차고 테스트', () => {
       garage.takeActionCars();
     });
 
-    expect(garage.getFurthestTravelCarsNames()).toEqual(FUREST_TRAVEL_CAR_NAMES);
+    expect(garage.getFurthestTravelCarNames()).toEqual(FUREST_TRAVEL_CAR_NAMES);
   });
 });

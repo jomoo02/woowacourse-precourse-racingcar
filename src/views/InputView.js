@@ -2,9 +2,9 @@ import { Console } from '@woowacourse/mission-utils';
 import { PRINT_READ, SKIP_ONE_LINE } from '../constants/print.js';
 
 const InputView = {
-  async readCarsNames() {
-    const carsNames = await Console.readLineAsync(`${PRINT_READ.carsNames}\n`);
-    return carsNames;
+  async readCarNames() {
+    const carNames = await Console.readLineAsync(`${PRINT_READ.carNames}\n`);
+    return carNames;
   },
 
   async readAttemptNumber() {

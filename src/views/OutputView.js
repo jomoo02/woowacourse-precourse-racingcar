@@ -17,8 +17,8 @@ const OutputView = {
     Console.print(SKIP_ONE_LINE);
   },
 
-  outputFinalWinners(furestTravelCarsNames) {
-    const finalWinners = `${PRINT_RESULT.finalWinner} : ${furestTravelCarsNames}`;
+  outputFinalWinners(furestTravelCarNames) {
+    const finalWinners = `${PRINT_RESULT.finalWinner} : ${furestTravelCarNames}`;
     Console.print(finalWinners);
   },
 

@@ -1,6 +1,7 @@
 import Garage from '../models/Garage.js';
 import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
+import AttemptNumberValidation from '../validations/AttemptNumberValidation.js';
 
 class Racing {
   #garage;
@@ -14,8 +15,8 @@ class Racing {
   }
 
   outputFinalWinners() {
-    const furestTravelCarsNames = this.#garage.getFurthestTravelCarsNames().join(', ');
-    OutputView.outputFinalWinners(furestTravelCarsNames);
+    const furestTravelCarNames = this.#garage.getFurthestTravelCarNames().join(', ');
+    OutputView.outputFinalWinners(furestTravelCarNames);
   }
 
   #outputAttemptNumberRunResult(attemptNumber) {
@@ -27,14 +28,15 @@ class Racing {
   }
 
   async createGarage() {
-    const carsNames = await InputView.readCarsNames();
+    const carsNames = await InputView.readCarNames();
     this.#garage = new Garage(carsNames);
     return this;
   }
 
   async inputAttemptNumber() {
     const attemptNumber = await InputView.readAttemptNumber();
-    this.#attemptNumber = attemptNumber;
+    const validation = new AttemptNumberValidation(attemptNumber);
+    this.#attemptNumber = validation.validate();
     return this;
   }
 }
