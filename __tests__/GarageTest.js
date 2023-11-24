@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+
 import Garage from '../src/models/Garage';
 
 const mockRandoms = (numbers) => {
