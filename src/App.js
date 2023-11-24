@@ -1,13 +1,12 @@
-import { inputCarNames, inputAttemptNumber } from './utils/inputUser';
-import race from './race';
+import Racing from './controllers/Racing.js';
 
 class App {
   // eslint-disable-next-line class-methods-use-this
   async play() {
-    const carNames = await inputCarNames();
-    const attemptNumber = await inputAttemptNumber();
-
-    race(carNames, attemptNumber);
+    const racing = new Racing();
+    await racing.createGarage();
+    await racing.inputAttemptNumber();
+    racing.ouputRunResult().outputFinalWinners();
   }
 }
 
