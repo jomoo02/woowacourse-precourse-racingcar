@@ -20,7 +20,6 @@ class CarValidation {
     if (isNotLessThanMax) {
       CarValidation.#throwError();
     }
-
     return this;
   }
 
@@ -30,7 +29,6 @@ class CarValidation {
     if (isNotGraterThanMin) {
       CarValidation.#throwError();
     }
-
     return this;
   }
 
@@ -40,7 +38,6 @@ class CarValidation {
     if (isincludeWhiteSpace) {
       CarValidation.#throwError();
     }
-
     return this;
   }
 

@@ -1,22 +1,23 @@
 import { Console } from '@woowacourse/mission-utils';
-import { PRINT_RESULT } from '../constants/print.js';
+import { PRINT_RESULT, SKIP_ONE_LINE } from '../constants/print.js';
 
 const OutputView = {
   outputRunResultPhrase() {
     Console.print(`${PRINT_RESULT.phrase}`);
   },
 
-  outputRunResult(cars) {
-    cars.forEach(([name, travelDistance]) => {
+  outputOneRunResult(cars) {
+    cars.forEach((car) => {
+      const name = car.getName();
+      const travelDistance = car.getTravelDistance();
       const carRunResult = `${name} : ${this.makeTravelDistanceString(travelDistance)}`;
       Console.print(carRunResult);
     });
 
-    Console.print();
+    Console.print(SKIP_ONE_LINE);
   },
 
-  outputFinalWinners(garage) {
-    const furestTravelCarsNames = garage.getFurthestTravelCarsNames().join(', ');
+  outputFinalWinners(furestTravelCarsNames) {
     const finalWinners = `${PRINT_RESULT.finalWinner} : ${furestTravelCarsNames}`;
     Console.print(finalWinners);
   },

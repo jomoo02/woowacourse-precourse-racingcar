@@ -26,7 +26,6 @@ class Garage {
     this.#cars.forEach((car) => {
       car.takeAction();
     });
-
     return this;
   }
 
@@ -39,7 +38,6 @@ class Garage {
 
   #createCars(carNames) {
     const carNamesArray = carNames.split(',');
-
     const cars = carNamesArray.map((carName) => new Car(carName));
     this.#cars = cars;
   }
